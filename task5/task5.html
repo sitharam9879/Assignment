@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #slider-container {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #0b0e12;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simple Image Slider</h2>
+    <div id="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+    </div>
+    <button class="button" onclick="prevImage()">Previous</button>
+    <button class="button" onclick="nextImage()">Next</button>
+    
+    <script>
+        const images = [
+            "pexels-designecologist-1779487.jpg",
+           "pexels-fauxels-3183197.jpg",      
+                 "pexels-joshsorenson-1714208.jpg",
+                 "pexels-pixabay-356056.jpg"
+
+        ];
+        
+        let currentIndex = 0;
+        
+        function updateImage() {
+            document.getElementById("slider").src = images[currentIndex];
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+        
+        window.onload = updateImage;
+    </script>
+</body>
+</html>
